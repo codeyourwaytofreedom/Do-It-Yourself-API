@@ -6,15 +6,20 @@ var router = express.Router();
 const pt= require('puppeteer');
 
 async function run(){
-    const browser = await pt.launch()
+    const browser = await pt.launch({headless:false})
     const page = await browser.newPage()
-    await page.goto('https://www.youtube.com/watch?v=7aPzchOkxXk')
+    
+    await page.goto('https://tr.wikipedia.org/wiki/Twitter')
+    await page.keyboard.press('End');
+    
+    const elements = await page.$$("td");
+    for (let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        const element_text = await page.evaluate(element => element.textContent, element)
+        console.log(element_text)
+    }
+    // browser.close()
 
-    const elements = await page.$$("div");
-    elements.forEach(async element => {
-	const text = await (await element.getProperty("textContent")).jsonValue();
-	console.log(text);
-});
 }
 run()
 
