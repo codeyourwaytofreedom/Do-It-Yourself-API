@@ -21,7 +21,7 @@ function App() {
           <h1>Data coming from API request</h1>
           <br />
           <br />
-          <h2 style={{color:"blue"}}>{Data ? Data : 5}</h2>
+          <h2 style={{color:"blue"}}>{Data ? Data.t : 5}</h2>
     </div>
   );
 }

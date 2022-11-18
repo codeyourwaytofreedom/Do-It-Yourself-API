@@ -20,7 +20,9 @@ async function getText(){
    if(text)
    {
             router.get("/", function(req, res, next) {
-            res.send(text);
+            res.json({
+                t: text
+            });
             });
    }
    
