@@ -15,7 +15,13 @@ function App() {
 
   return (
     <div className="App">
-          <h1>{Data ? Data : 5}</h1>
+      <br />
+      <br />
+      <br />
+          <h1>Data coming from API request</h1>
+          <br />
+          <br />
+          <h2 style={{color:"blue"}}>{Data ? Data : 5}</h2>
     </div>
   );
 }
