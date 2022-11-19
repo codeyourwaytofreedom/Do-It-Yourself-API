@@ -28,13 +28,19 @@ async function run(){
 
     const comments = await page.$$("#content-text");
     console.log("Length is: ",comments.length)
+    let fin = []
     for (let i = 0; i < comments.length; i++) {
             const element = comments[i];
             const element_text = await page.evaluate(element => element.textContent, element)
-            console.log(element_text)
-        }
-
+            console.log(element_text);
+            fin.push({"comment":element_text})
+        }   
+        router.get("/", function(req, res, next) {
+            res.send(fin);
+        });
+    
     browser.close()
+
 }
 
 
