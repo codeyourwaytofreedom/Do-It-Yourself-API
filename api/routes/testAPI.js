@@ -3,24 +3,38 @@ var express = require("express");
 var router = express.Router();
 
 
-const pt= require('puppeteer');
+const puppeteer = require("puppeteer-extra");
+const {executablePath} = require('puppeteer')
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+
+puppeteer.use(StealthPlugin());
+
+
+
 
 async function run(){
-    const browser = await pt.launch({headless:false})
+    const browser = await puppeteer.launch({
+        headless:false,
+        executablePath: executablePath()
+    })
     const page = await browser.newPage()
     
-    await page.goto('https://tr.wikipedia.org/wiki/Twitter')
-    await page.keyboard.press('End');
-    
-    const elements = await page.$$("td");
-    for (let i = 0; i < elements.length; i++) {
-        const element = elements[i];
-        const element_text = await page.evaluate(element => element.textContent, element)
-        console.log(element_text)
-    }
-    // browser.close()
+    await page.goto('https://www.youtube.com/watch?v=pM_Rx2Zjqhs');
 
+
+    //press Enter
+
+    // const elements = await page.$$("div");
+    // for (let i = 0; i < elements.length; i++) {
+    //     const element = elements[i];
+    //     const element_text = await page.evaluate(element => element.textContent, element)
+    //     console.log(element_text)
+    // }
+    // browser.close()
+    
 }
+
+
 run()
 
 
