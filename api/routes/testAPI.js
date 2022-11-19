@@ -10,8 +10,6 @@ const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 puppeteer.use(StealthPlugin());
 
 
-
-
 async function run(){
     const browser = await puppeteer.launch({
         headless:false,
@@ -21,33 +19,14 @@ async function run(){
     
     await page.goto('https://www.youtube.com/watch?v=pM_Rx2Zjqhs');
     await page.waitForTimeout(5000);
-    console.log("got here");
-    await page.keyboard.press("PageDown");
-    console.log("did first down");
-    await page.waitForTimeout(5000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
-    await page.waitForTimeout(2000);
-    await page.keyboard.press("PageDown");
 
-    const comments = await page.$$("yt-formatted-string.style-scope.ytd-comment-renderer");
+    for (let index = 0; index < 20; index++) {
+            await page.keyboard.press("PageDown");
+            await page.waitForTimeout(1000);
+        }
+   
+
+    const comments = await page.$$("#content-text");
     console.log("Length is: ",comments.length)
     for (let i = 0; i < comments.length; i++) {
             const element = comments[i];
@@ -55,16 +34,7 @@ async function run(){
             console.log(element_text)
         }
 
-    //press Enter
-
-    // const elements = await page.$$("div");
-    // for (let i = 0; i < elements.length; i++) {
-    //     const element = elements[i];
-    //     const element_text = await page.evaluate(element => element.textContent, element)
-    //     console.log(element_text)
-    // }
-    // browser.close()
-    
+    browser.close()
 }
 
 
