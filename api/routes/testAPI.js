@@ -34,8 +34,20 @@ async function run(){
     await page.keyboard.press("PageDown");
     await page.waitForTimeout(2000);
     await page.keyboard.press("PageDown");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
 
-    const comments = await page.$$("yt-formatted-string");
+    const comments = await page.$$("yt-formatted-string.style-scope.ytd-comment-renderer");
     console.log("Length is: ",comments.length)
     for (let i = 0; i < comments.length; i++) {
             const element = comments[i];
