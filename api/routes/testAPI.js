@@ -20,6 +20,15 @@ async function run(){
     const page = await browser.newPage()
     
     await page.goto('https://www.youtube.com/watch?v=pM_Rx2Zjqhs');
+    await page.waitForTimeout(5000);
+    console.log("got here");
+    await page.keyboard.press("PageDown");
+    console.log("did first down");
+    await page.waitForTimeout(5000);
+    await page.keyboard.press("PageDown");
+    console.log("did second down");
+
+
 
 
     //press Enter
