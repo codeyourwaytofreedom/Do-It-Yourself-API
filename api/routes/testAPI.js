@@ -26,10 +26,22 @@ async function run(){
     console.log("did first down");
     await page.waitForTimeout(5000);
     await page.keyboard.press("PageDown");
-    console.log("did second down");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
+    await page.waitForTimeout(2000);
+    await page.keyboard.press("PageDown");
 
-
-
+    const comments = await page.$$("yt-formatted-string");
+    console.log("Length is: ",comments.length)
+    for (let i = 0; i < comments.length; i++) {
+            const element = comments[i];
+            const element_text = await page.evaluate(element => element.textContent, element)
+            console.log(element_text)
+        }
 
     //press Enter
 
