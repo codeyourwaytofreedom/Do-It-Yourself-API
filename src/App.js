@@ -4,7 +4,9 @@ import axios from "axios";
 
 function App() {
   const [Data, setData] = useState(null);
-  const [sorted, setSorted] = useState(null);
+  const[splitted, setSplitted] = useState(null);
+
+  const [nonrepetitive, setNonrepetitive] = useState(null);
 
   useEffect(()=> {
 
@@ -12,28 +14,25 @@ function App() {
         setData(response.data);
         let all_words = [];
         let sorted = [];
-        if(Data){
-          for (let index = 0; index < Data.length; index++) {
-            const element = Data[index].comment.split(" ");
-            for (let index = 0; index < element.length; index++) {
-              const word = element[index];
-              all_words.push(word);
-              if(!sorted.includes(word))
-              {sorted.push(word)}
-            }
+        for (let index = 0; index < response.data.length; index++) {
+          const element = response.data[index].comment.split(" ");
+          for (let index = 0; index < element.length; index++) {
+            const word = element[index];
+            all_words.push(word);
+            if(!sorted.includes(word))
+            {sorted.push(word)}
           }
-          setSorted(sorted.length)
-
-          console.log(sorted.sort())
         }
-          
-          
 
+        setSplitted(all_words)
+        setNonrepetitive(sorted)    
         
         
       });
     
   },[])
+
+
 
   return (
     <div className="App">
@@ -41,6 +40,8 @@ function App() {
       <br />
       <br />
           <h1>Data coming from API request</h1>
+          <h1>{splitted && splitted.length}</h1>
+          <h1>{nonrepetitive && nonrepetitive.length }</h1>
           <br />
           <br />
           {
