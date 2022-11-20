@@ -1,18 +1,47 @@
 .statistics{
     border:2px solid blue;
-    display: grid;
-    padding: 30px;
+    display: flex;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+    padding-top: 30px;
+    &_summary{
+        border: 2px solid chartreuse;
+        display: grid;
+        row-gap: 1px;
+        padding-right: 15px;
+        &_title{
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        &_item{
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            border: 2px solid black;
+        }
+    }
     &_chart{
         display: grid;
         grid-template-columns: repeat(10, 1fr);
-        column-gap: 20px;
+        column-gap: 10px;
         align-items: flex-end;
         
         &_comment{
             display: grid;
             background-color: crimson;
             justify-content: center;
-            align-items: center;
+            align-items: end;
+            // border-top-left-radius: 30px;
+            border-top-right-radius: 60px;
+            position: relative;
+            width: fit-content;
+            padding: 2px 5px;
+
+            // &_repetition{
+            //     display: grid;
+            //     justify-self: center;
+            // }
         }
 
     }

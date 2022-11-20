@@ -53,14 +53,28 @@ const Statistics = () => {
         <div className="statistics">
             {/* <h3>{splitted && splitted.length}</h3>
             <h3>{nonrepetitive && nonrepetitive.length }</h3> */}
+            <div className="statistics_summary">
+              <div className="statistics_summary_title">Top Ten</div>
+                {
+                  final_duals && final_duals.slice(0,10).map((dual, index)=>
+                  <div key={index} className="statistics_summary_item">
+                      {dual.word[0].toUpperCase()}{dual.word.substring(1)}
+                  </div>
+                )
+                }
+            </div>
             <div className="statistics_chart">
                 {
                 final_duals && final_duals.slice(0,10).map((dual, index)=>
                 <div key={index} className="statistics_chart_comment" style={{height: dual.repetition*5}}>
-                  {dual.word}  {dual.repetition}
+                    {/* <span className="statistics_chart_comment_word">{dual.word}</span> */}
+                    <span className="statistics_chart_comment_repetition">x{dual.repetition}</span>
                 </div>
                 )
                 }
+            </div>
+            <div className="statistics_chart_round">
+              Hello
             </div>
                 
         </div>
