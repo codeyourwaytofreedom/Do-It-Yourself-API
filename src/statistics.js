@@ -51,8 +51,8 @@ const Statistics = () => {
 
     return ( 
         <div className="statistics">
-            {/* <h1>{splitted && splitted.length}</h1>
-            <h1>{nonrepetitive && nonrepetitive.length }</h1> */}
+            <h3>{splitted && splitted.length}</h3>
+            <h3>{nonrepetitive && nonrepetitive.length }</h3>
                 {
                 final_duals && final_duals.map((dual, index)=>
                 <div key={index} className="comment">
