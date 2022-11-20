@@ -12,7 +12,6 @@ function App() {
         for (let index = 0; index < Data.length; index++) {
           const element = Data[index].comment.split(" ");
           console.log(element)
-          // console.log(response.data)
         }
       });
     
@@ -28,7 +27,12 @@ function App() {
           <br />
           {
               Data && Data.map((comment, index)=>
-              <div key={index}>{comment.comment}</div>
+              <div key={index} className="comment">
+                {comment.comment.split(" ").map((word)=>
+                  <span>{word}</span>
+                )
+                }
+              </div>
               )
           }
           
