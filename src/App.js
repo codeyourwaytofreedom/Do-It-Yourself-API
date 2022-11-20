@@ -38,6 +38,8 @@ function App() {
             duals.push({word: sorted[index], repetition: repeat})
           }
         }
+        duals.sort((b,a) => a.repetition - b.repetition); // b - a for reverse sort
+
 
         setSplitted(all_words)
         setNonrepetitive(sorted)    

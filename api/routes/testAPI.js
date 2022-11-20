@@ -20,9 +20,9 @@ async function run(){
     await page.goto('https://www.youtube.com/watch?v=pM_Rx2Zjqhs');
     await page.waitForTimeout(5000);
 
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 50; index++) {
             await page.keyboard.press("PageDown");
-            await page.waitForTimeout(1000);
+            await page.waitForTimeout(500);
         }
    
 
