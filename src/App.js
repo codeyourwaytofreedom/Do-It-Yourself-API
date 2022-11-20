@@ -4,9 +4,11 @@ import axios from "axios";
 
 function App() {
   const [Data, setData] = useState(null);
-  const[splitted, setSplitted] = useState(null);
 
+  const[splitted, setSplitted] = useState(null);
   const [nonrepetitive, setNonrepetitive] = useState(null);
+
+  const [final_duals, setFinalduals] = useState(null);
 
   useEffect(()=> {
 
@@ -17,15 +19,29 @@ function App() {
         for (let index = 0; index < response.data.length; index++) {
           const element = response.data[index].comment.split(" ");
           for (let index = 0; index < element.length; index++) {
-            const word = element[index];
+            const word = element[index].toLowerCase();
             all_words.push(word);
             if(!sorted.includes(word))
             {sorted.push(word)}
           }
         }
+        let duals = [];
+        for (let index = 0; index < sorted.length; index++) {
+          let repeat = 0;
+          for (let a = 0; a < all_words.length; a++) {
+            if(sorted[index] === all_words[a])
+            {repeat = repeat + 1}
+          }
+          if(repeat>4)
+          { 
+            console.log(sorted[index], repeat)
+            duals.push({word: sorted[index], repetition: repeat})
+          }
+        }
 
         setSplitted(all_words)
         setNonrepetitive(sorted)    
+        setFinalduals(duals)
         
         
       });
@@ -44,7 +60,7 @@ function App() {
           <h1>{nonrepetitive && nonrepetitive.length }</h1>
           <br />
           <br />
-          {
+          {/* {
               Data && Data.map((comment, index)=>
               <div key={index} className="comment">
                 {comment.comment.split(" ").map((word, index)=>
@@ -53,7 +69,15 @@ function App() {
                 }
               </div>
               )
-          }
+          } */}
+
+            {
+                final_duals && final_duals.map((dual, index)=>
+                <div key={index} className="comment">
+                  {dual.word} , {dual.repetition}
+                </div>
+                )
+            }
           
     </div>
   );
