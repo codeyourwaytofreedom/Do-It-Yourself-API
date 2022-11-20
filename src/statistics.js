@@ -51,15 +51,18 @@ const Statistics = () => {
 
     return ( 
         <div className="statistics">
-            <h3>{splitted && splitted.length}</h3>
-            <h3>{nonrepetitive && nonrepetitive.length }</h3>
+            {/* <h3>{splitted && splitted.length}</h3>
+            <h3>{nonrepetitive && nonrepetitive.length }</h3> */}
+            <div className="statistics_chart">
                 {
-                final_duals && final_duals.map((dual, index)=>
-                <div key={index} className="comment">
+                final_duals && final_duals.slice(0,10).map((dual, index)=>
+                <div key={index} className="statistics_chart_comment" style={{height: dual.repetition*5}}>
                   {dual.word}  {dual.repetition}
                 </div>
                 )
                 }
+            </div>
+                
         </div>
      );
 }

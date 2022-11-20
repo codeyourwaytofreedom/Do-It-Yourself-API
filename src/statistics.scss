@@ -1,4 +1,20 @@
 .statistics{
     border:2px solid blue;
+    display: grid;
+    padding: 30px;
+    &_chart{
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        column-gap: 20px;
+        align-items: flex-end;
+        
+        &_comment{
+            display: grid;
+            background-color: crimson;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
 }
 

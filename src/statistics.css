@@ -1,3 +1,18 @@
 .statistics {
   border: 2px solid blue;
+  display: grid;
+  padding: 30px;
+}
+.statistics_chart {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  align-items: flex-end;
+}
+.statistics_chart_comment {
+  display: grid;
+  background-color: crimson;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=statistics.css.map */
