@@ -9,6 +9,11 @@ function App() {
 
       axios.get("http://localhost:9000/testAPI").then((response) => {
         setData(response.data);
+        for (let index = 0; index < Data.length; index++) {
+          const element = Data[index].comment.split(" ");
+          console.log(element)
+          // console.log(response.data)
+        }
       });
     
   },[])
@@ -21,7 +26,12 @@ function App() {
           <h1>Data coming from API request</h1>
           <br />
           <br />
-          <h2 style={{color:"blue"}}>{Data ? Data.t : 5}</h2>
+          {
+              Data && Data.map((comment, index)=>
+              <div key={index}>{comment.comment}</div>
+              )
+          }
+          
     </div>
   );
 }
