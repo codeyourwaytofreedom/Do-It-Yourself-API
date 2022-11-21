@@ -19,8 +19,9 @@ const Statistics = () => {
             for (let index = 0; index < element.length; index++) {
               const word = element[index].toLowerCase();
               all_words.push(word);
-              if(!sorted.includes(word))
+              if(!sorted.includes(word)) 
               {sorted.push(word)}
+              console.log(7)
             }
           }
           let duals = [];
