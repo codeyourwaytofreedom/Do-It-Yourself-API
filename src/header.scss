@@ -31,36 +31,41 @@ html, body{
     }
     .foots{
         position: relative;
-        border:4px solid red;
+        //border:4px solid red;
         width: 500px;
         height: 90px;
+        display: grid;
+        padding-left: 50px;
+        &_left{
+            //border: 2px solid green;
+            display: flex;
+        }
+        &_right{
+            //border: 2px solid pink;
+            display: flex;
+        }
     }
-    .left-foot{
-        border: 2px solid maroon;
+    .foot{
+        //border: 2px solid maroon;
         width: 40px; height: 40px;
-        position: absolute;
-        top: 0;
-        opacity: 0;
+       // position: absolute;
+       // top: 0;
+       opacity: 0;
 
         img{
-            transform: rotate(50deg);
             width: 100%; height: 100%;
             object-fit: contain;
         }
     }
-    .right-foot{
-        border: 2px solid blue;
-        width: 40px; height: 40px;
-        position: absolute;
-        bottom: 0;
-        opacity: 0;
-        left: 40px;
+    #one, #three, #five, #seven{
         img{
-            transform: rotate(60deg);
-            width: 100%; height: 100%;
-            object-fit: contain;
+            transform: rotate(80deg);
         }
-
+    }
+    #two, #four, #six, #eight{
+        img{
+            transform: rotate(84deg);
+        }
     }
 }
 
