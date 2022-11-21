@@ -38,14 +38,12 @@ html, body{
     .left-foot{
         border: 2px solid maroon;
         width: 40px; height: 40px;
-        animation-name: leftfoot;
-        animation-duration: 4s;
-        animation-iteration-count: infinite;
         position: absolute;
         top: 0;
+        opacity: 0;
 
         img{
-            transform: rotate(70deg);
+            transform: rotate(50deg);
             width: 100%; height: 100%;
             object-fit: contain;
         }
@@ -55,6 +53,8 @@ html, body{
         width: 40px; height: 40px;
         position: absolute;
         bottom: 0;
+        opacity: 0;
+        left: 40px;
         img{
             transform: rotate(60deg);
             width: 100%; height: 100%;
@@ -64,7 +64,5 @@ html, body{
     }
 }
 
-@keyframes leftfoot7 {
-    from{border: 2px solid red;}
-    to{border:7px solid greenyellow;}
-}
+
+
