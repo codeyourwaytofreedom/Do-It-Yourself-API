@@ -1,5 +1,5 @@
 .statistics{
-    border:2px solid blue;
+    //border:2px solid blue;
     display: flex;
     // display: grid;
     // grid-template-columns: 1fr 1fr;
@@ -54,6 +54,9 @@
             padding: 2px 5px;
         }
 
+    }
+    &_chart_round{
+        border: 3px solid purple;
     }
 }
 

@@ -71,21 +71,21 @@ const Statistics = () => {
                       
                     </div>
                     <div className="statistics_summary_item_word"
-                    style={{color:
-                      index === 0 ? "orange":
-                      index === 1 ? "yellowgreen":
-                      index === 2 ? "salmon":
-                      "gray"
-                    }}
+                      style={{color:
+                        index === 0 ? "orange":
+                        index === 1 ? "yellowgreen":
+                        index === 2 ? "salmon":
+                        "gray"
+                      }}
                     
                     >{dual.word[0].toUpperCase()}{dual.word.substring(1)}</div>
                     <div className="statistics_summary_item_count"
-                    style={{color:
-                      index === 0 ? "orange":
-                      index === 1 ? "yellowgreen":
-                      index === 2 ? "salmon":
-                      "gray"
-                    }}
+                      style={{color:
+                        index === 0 ? "orange":
+                        index === 1 ? "yellowgreen":
+                        index === 2 ? "salmon":
+                        "gray"
+                      }}
                     >{dual.repetition}</div>
                       
                   </div>
@@ -96,7 +96,6 @@ const Statistics = () => {
                 {
                 final_duals && final_duals.slice(0,10).map((dual, index)=>
                 <div key={index} className="statistics_chart_comment" 
-                
                     style={{height: dual.repetition*5,
                     backgroundColor:
                     index === 0 ? "orange":

@@ -10,8 +10,8 @@ html, body{
 
 .App{
     width: 100%;
-    border: 2px solid red;
-    padding: 40px;
+/*     border: 2px solid red;
+ */    padding: 40px;
 }
 
 
@@ -29,5 +29,42 @@ html, body{
                 object-fit: contain;
             }
     }
+    .foots{
+        position: relative;
+        border:4px solid red;
+        width: 500px;
+        height: 90px;
+    }
+    .left-foot{
+        border: 2px solid maroon;
+        width: 40px; height: 40px;
+        animation-name: leftfoot;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        position: absolute;
+        top: 0;
+
+        img{
+            transform: rotate(70deg);
+            width: 100%; height: 100%;
+            object-fit: contain;
+        }
+    }
+    .right-foot{
+        border: 2px solid blue;
+        width: 40px; height: 40px;
+        position: absolute;
+        bottom: 0;
+        img{
+            transform: rotate(60deg);
+            width: 100%; height: 100%;
+            object-fit: contain;
+        }
+
+    }
 }
 
+@keyframes leftfoot7 {
+    from{border: 2px solid red;}
+    to{border:7px solid greenyellow;}
+}
