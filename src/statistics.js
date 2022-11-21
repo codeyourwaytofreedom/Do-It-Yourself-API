@@ -61,17 +61,32 @@ const Statistics = () => {
                 {
                   final_duals && final_duals.slice(0,10).map((dual, index)=>
                   <div key={index} className="statistics_summary_item">
-                    <div className="statistics_summary_icon">
+                    <div className="statistics_summary_item_icon">
                       {
                         index === 0 ? <FontAwesomeIcon icon={faChessQueen} size={"4x"} color={"orange"}/> : 
                         index === 1 ? <FontAwesomeIcon icon={faChessKnight} size={"3x"} color={"yellowgreen"}/> :
                         index === 2 ? <FontAwesomeIcon icon={faChessBishop} size={"2x"} color={"salmon"}/> :
-                        <FontAwesomeIcon icon={faChessPawn}/>
+                        <FontAwesomeIcon icon={faChessPawn} size={"2xl"} color={"gray"}/>
                       }
                       
                     </div>
-                    <div className="statistics_summary_word">{dual.word[0].toUpperCase()}{dual.word.substring(1)}</div>
-                    <div className="statistics_summary_count">{dual.repetition}</div>
+                    <div className="statistics_summary_item_word"
+                    style={{color:
+                      index === 0 ? "orange":
+                      index === 1 ? "yellowgreen":
+                      index === 2 ? "salmon":
+                      "gray"
+                    }}
+                    
+                    >{dual.word[0].toUpperCase()}{dual.word.substring(1)}</div>
+                    <div className="statistics_summary_item_count"
+                    style={{color:
+                      index === 0 ? "orange":
+                      index === 1 ? "yellowgreen":
+                      index === 2 ? "salmon":
+                      "gray"
+                    }}
+                    >{dual.repetition}</div>
                       
                   </div>
                 )
@@ -80,9 +95,15 @@ const Statistics = () => {
             <div className="statistics_chart">
                 {
                 final_duals && final_duals.slice(0,10).map((dual, index)=>
-                <div key={index} className="statistics_chart_comment" style={{height: dual.repetition*5}}>
-                    {/* <span className="statistics_chart_comment_word">{dual.word}</span> */}
-                    <span className="statistics_chart_comment_repetition">x{dual.repetition}</span>
+                <div key={index} className="statistics_chart_comment" 
+                
+                    style={{height: dual.repetition*5,
+                    backgroundColor:
+                    index === 0 ? "orange":
+                      index === 1 ? "yellowgreen":
+                      index === 2 ? "salmon":
+                      "gray"
+                    }}>
                 </div>
                 )
                 }

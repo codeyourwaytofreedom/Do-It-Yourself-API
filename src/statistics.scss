@@ -5,29 +5,36 @@
     // grid-template-columns: 1fr 1fr;
     padding: 30px;
     &_summary{
-        border: 2px solid chartreuse;
+        //border: 2px solid chartreuse;
         display: grid;
         row-gap: 1px;
         padding-right: 15px;
         &_title{
             font-family: 'Oswald', sans-serif;
-            font-size: 18px;
+            font-size: 21px;
             font-weight: 600;
             text-decoration: underline;
             padding-bottom: 10px;
         }
         &_item{
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
+            display: flex;
             column-gap: 10px;
             font-family: 'Oswald', sans-serif;
             font-size: 16px; font-weight: 600;
-            border: 2px solid black;
-            div{
+            //border: 2px solid black;
+            &_icon{
+                display: grid;
+                //border: 2px solid red;
+                justify-content: center;
+                width: 70px;
+            }
+            &_word, &_count{
                 display: grid;
                 justify-content: start;
-                align-items: center;
+                align-items: end;
                 padding: 5px;
+                width: 50px;
+
             }
         }
     }
@@ -39,19 +46,12 @@
         
         &_comment{
             display: grid;
-            background-color: crimson;
             justify-content: center;
             align-items: end;
-            // border-top-left-radius: 30px;
             border-top-right-radius: 60px;
             position: relative;
-            width: fit-content;
+            width: 30px;
             padding: 2px 5px;
-
-            // &_repetition{
-            //     display: grid;
-            //     justify-self: center;
-            // }
         }
 
     }

@@ -4,33 +4,36 @@
   padding: 30px;
 }
 .statistics_summary {
-  border: 2px solid chartreuse;
   display: grid;
   row-gap: 1px;
   padding-right: 15px;
 }
 .statistics_summary_title {
   font-family: "Oswald", sans-serif;
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 600;
   text-decoration: underline;
   padding-bottom: 10px;
 }
 .statistics_summary_item {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  display: flex;
   -moz-column-gap: 10px;
        column-gap: 10px;
   font-family: "Oswald", sans-serif;
   font-size: 16px;
   font-weight: 600;
-  border: 2px solid black;
 }
-.statistics_summary_item div {
+.statistics_summary_item_icon {
+  display: grid;
+  justify-content: center;
+  width: 70px;
+}
+.statistics_summary_item_word, .statistics_summary_item_count {
   display: grid;
   justify-content: start;
-  align-items: center;
+  align-items: end;
   padding: 5px;
+  width: 50px;
 }
 .statistics_chart {
   display: grid;
@@ -41,13 +44,10 @@
 }
 .statistics_chart_comment {
   display: grid;
-  background-color: crimson;
   justify-content: center;
   align-items: end;
   border-top-right-radius: 60px;
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 30px;
   padding: 2px 5px;
 }/*# sourceMappingURL=statistics.css.map */
