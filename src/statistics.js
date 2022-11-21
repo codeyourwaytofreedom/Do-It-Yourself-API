@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChessBishop, faChessKnight, faChessPawn, faChessQueen } from "@fortawesome/free-solid-svg-icons";
+
 import axios from "axios";
 import "./statistics.css"
 
@@ -21,7 +24,6 @@ const Statistics = () => {
               all_words.push(word);
               if(!sorted.includes(word)) 
               {sorted.push(word)}
-              console.log(7)
             }
           }
           let duals = [];
@@ -59,7 +61,18 @@ const Statistics = () => {
                 {
                   final_duals && final_duals.slice(0,10).map((dual, index)=>
                   <div key={index} className="statistics_summary_item">
-                      {dual.word[0].toUpperCase()}{dual.word.substring(1)}
+                    <div className="statistics_summary_icon">
+                      {
+                        index === 0 ? <FontAwesomeIcon icon={faChessQueen} size={"4x"} color={"orange"}/> : 
+                        index === 1 ? <FontAwesomeIcon icon={faChessKnight} size={"3x"} color={"yellowgreen"}/> :
+                        index === 2 ? <FontAwesomeIcon icon={faChessBishop} size={"2x"} color={"salmon"}/> :
+                        <FontAwesomeIcon icon={faChessPawn}/>
+                      }
+                      
+                    </div>
+                    <div className="statistics_summary_word">{dual.word[0].toUpperCase()}{dual.word.substring(1)}</div>
+                    <div className="statistics_summary_count">{dual.repetition}</div>
+                      
                   </div>
                 )
                 }

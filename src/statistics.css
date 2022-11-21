@@ -1,7 +1,7 @@
 .statistics {
   border: 2px solid blue;
   display: flex;
-  padding-top: 30px;
+  padding: 30px;
 }
 .statistics_summary {
   border: 2px solid chartreuse;
@@ -14,11 +14,23 @@
   font-size: 18px;
   font-weight: 600;
   text-decoration: underline;
+  padding-bottom: 10px;
 }
 .statistics_summary_item {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
   font-family: "Oswald", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 600;
   border: 2px solid black;
+}
+.statistics_summary_item div {
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  padding: 5px;
 }
 .statistics_chart {
   display: grid;
