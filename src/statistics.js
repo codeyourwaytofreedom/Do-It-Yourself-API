@@ -9,15 +9,17 @@ const Statistics = () => {
 
     /* const[splitted, setSplitted] = useState(null);
     const [nonrepetitive, setNonrepetitive] = useState(null); */
+    const [all_comments, setAllcomments] = useState([]);
   
     const [final_duals, setFinalduals] = useState(null);
-    const [clicked_word, setClickedword] = useState("");
+    const [clicked_word, setClickedword] = useState("hh");
   
-    useEffect(()=> {
+    useEffect(()=> {   
   
         axios.get("http://localhost:9000/testAPI").then((response) => {
           let all_words = [];
           let sorted = [];
+          setAllcomments(response.data)
           for (let index = 0; index < response.data.length; index++) {
             const element = response.data[index].comment.split(" ");
             for (let index = 0; index < element.length; index++) {
@@ -112,7 +114,10 @@ const Statistics = () => {
               <div className="statistics_chart_round_title">Comments including the word "X"</div>
               <div className="statistics_chart_round_comments">
                 <div className="statistics_chart_round_comments_comment">{clicked_word[0].toUpperCase()+clicked_word.substring(1)}</div>
-                <div className="statistics_chart_round_comments_comment">Comment</div>
+                {all_comments && all_comments.map((comment)=> 
+                        <div className="statistics_chart_round_comments_comment">{comment.comment}</div>
+                )}
+                
                 <div className="statistics_chart_round_comments_comment">Comment</div>
               </div>
 
