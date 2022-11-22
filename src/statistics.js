@@ -7,10 +7,11 @@ import "./statistics.css"
 
 const Statistics = () => {
 
-    const[splitted, setSplitted] = useState(null);
-    const [nonrepetitive, setNonrepetitive] = useState(null);
+    /* const[splitted, setSplitted] = useState(null);
+    const [nonrepetitive, setNonrepetitive] = useState(null); */
   
     const [final_duals, setFinalduals] = useState(null);
+    const [clicked_word, setClickedword] = useState("");
   
     useEffect(()=> {
   
@@ -42,9 +43,9 @@ const Statistics = () => {
           duals.sort((b,a) => a.repetition - b.repetition); // b - a for reverse sort
   
   
-          setSplitted(all_words)
-          setNonrepetitive(sorted)    
-          setFinalduals(duals)
+          //setSplitted(all_words)
+          /* setNonrepetitive(sorted)*/    
+          setFinalduals(duals) 
           
           
         });
@@ -60,7 +61,7 @@ const Statistics = () => {
               <div className="statistics_summary_title">Top Ten</div>
                 {
                   final_duals && final_duals.slice(0,10).map((dual, index)=>
-                  <div key={index} className="statistics_summary_item">
+                  <div key={index} className="statistics_summary_item" onClick={()=> setClickedword(dual.word)}>
                     <div className="statistics_summary_item_icon">
                       {
                         index === 0 ? <FontAwesomeIcon icon={faChessQueen} size={"4x"} color={"orange"}/> : 
@@ -108,7 +109,13 @@ const Statistics = () => {
                 }
             </div>
             <div className="statistics_chart_round">
-              Hello
+              <div className="statistics_chart_round_title">Comments including the word "X"</div>
+              <div className="statistics_chart_round_comments">
+                <div className="statistics_chart_round_comments_comment">{clicked_word[0].toUpperCase()+clicked_word.substring(1)}</div>
+                <div className="statistics_chart_round_comments_comment">Comment</div>
+                <div className="statistics_chart_round_comments_comment">Comment</div>
+              </div>
+
             </div>
                 
         </div>
