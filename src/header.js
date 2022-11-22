@@ -11,7 +11,7 @@ const [visible, setVisible] = useState(false)
 const total_animation_time = 3000
 const division = 8
 
-    /* useEffect(() => {
+     /* useEffect(() => {
         const intervalId = setInterval(() => {
             if(visible){setVisible(false); total_animation_time=1000}
             else{setVisible(true); total_animation_time=3000}
@@ -74,7 +74,7 @@ const division = 8
                 {
                     !visible ? 
                     <div className="motto" style={{visibility: visible ? "hidden" : "visible"}}>
-                        <h1>Motto Motto Motto Motto </h1>
+                        See Through Words
                     </div>
                     : null
                 }
