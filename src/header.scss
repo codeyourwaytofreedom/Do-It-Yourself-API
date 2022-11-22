@@ -29,9 +29,22 @@ html, body{
                 object-fit: contain;
             }
     }
+    .motto{
+        position: absolute;
+        width: 500px;
+        height: 90px;
+        border: 2px solid blue;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        animation-name: shrink;
+        animation-duration: 3s;
+        font-size: 15px;
+        z-index: 5;
+    }
     .foots{
         position: relative;
-        //border:4px solid red;
+        border:4px solid red;
         width: 500px;
         height: 90px;
         display: grid;
@@ -69,5 +82,8 @@ html, body{
     }
 }
 
-
+@keyframes shrink {
+    from{font-size: 15px;}
+    to{font-size: 30px;}
+}
 
