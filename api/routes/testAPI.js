@@ -38,7 +38,6 @@ async function run(){
         router.get("/", function(req, res, next) {
             res.send(fin);
         });
-    
     browser.close()
 
 }

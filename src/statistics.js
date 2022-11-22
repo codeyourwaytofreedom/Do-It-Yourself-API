@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChessBishop, faChessKnight, faChessPawn, faChessQueen } from "@fortawesome/free-solid-svg-icons";
+import { faCaretRight, faChessBishop, faChessKnight, faChessPawn, faChessQueen } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "axios";
 import "./statistics.css"
@@ -9,10 +9,15 @@ const Statistics = () => {
 
     /* const[splitted, setSplitted] = useState(null);
     const [nonrepetitive, setNonrepetitive] = useState(null); */
+    
+    const color1 = "orange";
+    const color2 = "yellowgreen";
+    const color3 = "salmon";
+
     const [all_comments, setAllcomments] = useState([]);
   
     const [final_duals, setFinalduals] = useState(null);
-    const [clicked_word, setClickedword] = useState("hh");
+    const [clicked_word, setClickedword] = useState(null);
   
     useEffect(()=> {   
   
@@ -38,7 +43,7 @@ const Statistics = () => {
             }
             if(repeat>4 && sorted[index].length >=3)
             { 
-              console.log(sorted[index], repeat)
+              //console.log(sorted[index], repeat)
               duals.push({word: sorted[index], repetition: repeat})
             }
           }
@@ -48,6 +53,7 @@ const Statistics = () => {
           //setSplitted(all_words)
           /* setNonrepetitive(sorted)*/    
           setFinalduals(duals) 
+          setClickedword(duals[0].word)
           
           
         });
@@ -66,9 +72,9 @@ const Statistics = () => {
                   <div key={index} className="statistics_summary_item" onClick={()=> setClickedword(dual.word)}>
                     <div className="statistics_summary_item_icon">
                       {
-                        index === 0 ? <FontAwesomeIcon icon={faChessQueen} size={"4x"} color={"orange"}/> : 
-                        index === 1 ? <FontAwesomeIcon icon={faChessKnight} size={"3x"} color={"yellowgreen"}/> :
-                        index === 2 ? <FontAwesomeIcon icon={faChessBishop} size={"2x"} color={"salmon"}/> :
+                        index === 0 ? <FontAwesomeIcon icon={faChessQueen} size={"4x"} color={color1}/> : 
+                        index === 1 ? <FontAwesomeIcon icon={faChessKnight} size={"3x"} color={color2}/> :
+                        index === 2 ? <FontAwesomeIcon icon={faChessBishop} size={"2x"} color={color3}/> :
                         <FontAwesomeIcon icon={faChessPawn} size={"2xl"} color={"gray"}/>
                       }
                       
@@ -84,9 +90,9 @@ const Statistics = () => {
                     >{dual.word[0].toUpperCase()}{dual.word.substring(1)}</div>
                     <div className="statistics_summary_item_count"
                       style={{color:
-                        index === 0 ? "orange":
-                        index === 1 ? "yellowgreen":
-                        index === 2 ? "salmon":
+                        index === 0 ? color1:
+                        index === 1 ? color2:
+                        index === 2 ? color3:
                         "gray"
                       }}
                     >{dual.repetition}</div>
@@ -111,14 +117,15 @@ const Statistics = () => {
                 }
             </div>
             <div className="statistics_chart_round">
-              <div className="statistics_chart_round_title">Comments including the word "X"</div>
-              <div className="statistics_chart_round_comments">
-                <div className="statistics_chart_round_comments_comment">{clicked_word[0].toUpperCase()+clicked_word.substring(1)}</div>
-                {all_comments && all_comments.map((comment)=> 
-                        <div className="statistics_chart_round_comments_comment">{comment.comment}</div>
+              <div className="statistics_chart_round_title">Comments including the word "{clicked_word && clicked_word[0].toUpperCase()+clicked_word.substring(1)}"</div>
+              <div className="statistics_chart_round_comments">                
+                {all_comments && all_comments.filter((comment)=> comment.comment.includes(clicked_word)).map((comment)=> 
+
+                        <div className="statistics_chart_round_comments_comment">
+                          <div><FontAwesomeIcon icon={faCaretRight} color={"black"} size={"2x"} /></div>
+                          <div id="comment-text">{comment.comment[0].toUpperCase()+comment.comment.substring(1)}</div>
+                        </div>
                 )}
-                
-                <div className="statistics_chart_round_comments_comment">Comment</div>
               </div>
 
             </div>
