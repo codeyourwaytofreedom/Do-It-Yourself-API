@@ -4,10 +4,13 @@ var router = express.Router();
 
 const app = express();
 const bodyParser = require("body-parser")
-app.use(express.json());
 
-router.post("/", function(req, res) {
-    console.log(res)
+
+var jsonParser = bodyParser.json()
+
+
+router.post("/",jsonParser, function(req, res) {
+    console.log(req.body.url)
 });
 
 const puppeteer = require("puppeteer-extra");

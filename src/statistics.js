@@ -58,7 +58,7 @@ const Statistics = () => {
 
     const test_post = () => {
           axios.post("http://localhost:9000/testAPI",
-          "New Comment"
+          {url: "New Url sent back to API"}
         ).then(function (response) {
           console.log(response);
         });
