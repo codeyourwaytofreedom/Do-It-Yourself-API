@@ -9,15 +9,29 @@ const bodyParser = require("body-parser")
 var jsonParser = bodyParser.json()
 
 
-router.post("/",jsonParser, function(req, res) {
-    console.log(req.body.url)
-});
-
 const puppeteer = require("puppeteer-extra");
 const {executablePath} = require('puppeteer')
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
 puppeteer.use(StealthPlugin());
+
+
+router.post("/",jsonParser, function(req, res) {
+    console.log(req.body.url)
+    async function run(){
+        const browser = await puppeteer.launch({
+            headless:false,
+            executablePath: executablePath()
+        })
+        const page = await browser.newPage()
+        
+        await page.goto('https://www.youtube.com/watch?v=7aPzchOkxXk');
+        await page.waitForTimeout(5000);    
+    }
+    run();
+
+
+});
 
 
 async function run(){

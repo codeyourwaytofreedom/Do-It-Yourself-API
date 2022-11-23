@@ -58,7 +58,7 @@ const Statistics = () => {
 
     const test_post = () => {
           axios.post("http://localhost:9000/testAPI",
-          {url: "New Url sent back to API"}
+          {url: "https://www.youtube.com/watch?v=7aPzchOkxXk"}
         ).then(function (response) {
           console.log(response);
         });
