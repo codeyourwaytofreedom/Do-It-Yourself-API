@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import  {} from '@fortawesome/free-solid-svg-icons';
+import  {faBoltLightning, faFireBurner, faLightbulb} from '@fortawesome/free-solid-svg-icons';
 
 import "./header.css";
 import { useRef, useState, useEffect } from "react";
@@ -11,6 +11,8 @@ const [visible, setVisible] = useState(false)
 const total_animation_time = 3000
 const division = 8
 
+const [focused, setFocused] = useState(false)
+
      /* useEffect(() => {
         const intervalId = setInterval(() => {
             if(visible){setVisible(false); total_animation_time=1000}
@@ -19,14 +21,30 @@ const division = 8
       
         return () => clearInterval(intervalId);
       } ); */
+const handle_focus = () => {
+            setFocused(true)
+}
 
+const handle_blur = () => {
+        setFocused(false)
+}
 
     return ( 
         <div className="header">
-            <div className="youtube_logo">
+            <div className="logo_double">
+                <div className="youtube_logo">
                 <img src={require("./images/youtube.png")} alt="a" />
             </div>
-            <h1>YouTube Analytics</h1>
+            {/* <h1>YouTube Analytics</h1> */}
+            </div>
+            
+            <div className="url_bar" style={{border: focused ? "2px solid white" : "none"}}>
+                <span>
+                    <FontAwesomeIcon icon={faLightbulb} color={focused ? "white" : "black"} size={"2xl"}/>
+                </span>
+                
+                    <input type="text" onFocus={handle_focus} onBlur={handle_blur} placeholder={"Enter a URL to see through words"} />
+                </div>
             <div className="foots">
                 <div className="foots_left">
                     <div className="foot" id="one" style={{opacity:visible ? "1" : 0 }}>
@@ -71,6 +89,7 @@ const division = 8
                     </div> 
 
                 </div>
+                
                 {
                     !visible ? 
                     <div className="motto" style={{visibility: visible ? "hidden" : "visible"}}>
@@ -80,6 +99,8 @@ const division = 8
                 }
                 
             </div>
+            
+                
 
             
         </div>

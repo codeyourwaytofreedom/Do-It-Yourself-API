@@ -17,13 +17,19 @@ html, body {
 }
 
 .header {
+  border: 2px solid yellowgreen;
   display: flex;
   align-items: center;
   -moz-column-gap: 20px;
        column-gap: 20px;
   font-family: "Calligraffitti";
+  position: relative;
+}
+.header .logo_double {
+  display: flex;
 }
 .header .youtube_logo {
+  border: 4px solid purple;
   height: 90px;
   width: 90px;
 }
@@ -32,6 +38,34 @@ html, body {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+.header .url_bar {
+  width: 40vw;
+  height: 60px;
+  display: flex;
+  background-color: black;
+  border-radius: 30px;
+  padding-left: 10px;
+}
+.header .url_bar span {
+  transform: rotate(130deg);
+  position: relative;
+  top: -17px;
+}
+.header .url_bar input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding-left: 30px;
+  color: white;
+  font-size: 21px;
+}
+.header .url_bar input:focus {
+  outline: none;
+}
+.header .url_bar input:focus + span {
+  border: 4px solid white;
 }
 .header .motto {
   position: absolute;
@@ -53,7 +87,8 @@ html, body {
   text-shadow: 2px 2px 1px #3b051d;
 }
 .header .foots {
-  position: relative;
+  position: absolute;
+  right: 0;
   width: 500px;
   height: 90px;
   display: grid;
