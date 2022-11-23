@@ -2,6 +2,13 @@
 var express = require("express");
 var router = express.Router();
 
+const app = express();
+const bodyParser = require("body-parser")
+app.use(express.json());
+
+router.post("/", function(req, res) {
+    console.log(res)
+});
 
 const puppeteer = require("puppeteer-extra");
 const {executablePath} = require('puppeteer')
@@ -20,7 +27,7 @@ async function run(){
     await page.goto('https://www.youtube.com/watch?v=pM_Rx2Zjqhs');
     await page.waitForTimeout(5000);
 
-    for (let index = 0; index < 50; index++) {
+    for (let index = 0; index < 10; index++) {
             await page.keyboard.press("PageDown");
             await page.waitForTimeout(500);
         }
@@ -44,7 +51,6 @@ async function run(){
 
 
 run()
-
 
 // async function getText(){
 //    //launch browser in headless mode

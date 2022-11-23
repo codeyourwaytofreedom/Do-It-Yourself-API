@@ -48,18 +48,21 @@ const Statistics = () => {
             }
           }
           duals.sort((b,a) => a.repetition - b.repetition); // b - a for reverse sort
-  
-  
           //setSplitted(all_words)
           /* setNonrepetitive(sorted)*/    
           setFinalduals(duals) 
           setClickedword(duals[0].word)
-          
-          
-        });
+        })
       
     },[])
 
+    const test_post = () => {
+          axios.post("http://localhost:9000/testAPI",
+          "New Comment"
+        ).then(function (response) {
+          console.log(response);
+        });
+    }
 
     return ( 
         <div className="statistics">
@@ -118,9 +121,9 @@ const Statistics = () => {
             </div>
             <div className="statistics_chart_round">
               <div className="statistics_chart_round_title">Comments including the word "{clicked_word && clicked_word[0].toUpperCase()+clicked_word.substring(1)}"</div>
-              <div className="statistics_chart_round_comments">                
+              <div className="statistics_chart_round_comments">   
+              <button onClick={test_post}>Test Post</button>             
                 {all_comments && all_comments.filter((comment)=> comment.comment.includes(clicked_word)).map((comment)=> 
-
                         <div className="statistics_chart_round_comments_comment">
                           <div><FontAwesomeIcon icon={faCaretRight} color={"black"} size={"2x"} /></div>
                           <div id="comment-text">{comment.comment[0].toUpperCase()+comment.comment.substring(1)}</div>
