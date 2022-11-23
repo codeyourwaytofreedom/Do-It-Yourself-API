@@ -27,10 +27,28 @@ router.post("/",jsonParser, function(req, res) {
         
         await page.goto('https://www.youtube.com/watch?v=7aPzchOkxXk');
         await page.waitForTimeout(5000);    
+
+        for (let index = 0; index < 10; index++) {
+            await page.keyboard.press("PageDown");
+            await page.waitForTimeout(500);
+        }
+   
+
+        const comments = await page.$$("#content-text");
+        console.log("Length is: ",comments.length)
+        let fin = []
+        for (let i = 0; i < comments.length; i++) {
+                const element = comments[i];
+                const element_text = await page.evaluate(element => element.textContent, element)
+                console.log(element_text);
+                fin.push({"comment":element_text})
+            }   
+            
+        res.send(fin);
+            
+        browser.close()
     }
     run();
-
-
 });
 
 
