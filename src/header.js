@@ -38,9 +38,16 @@ const handle_blur = () => {
             {/* <h1>YouTube Analytics</h1> */}
             </div>
             
-            <div className="url_bar" style={{border: focused ? "2px solid white" : "none"}}>
+            <div className="url_bar">
                 <span>
-                    <FontAwesomeIcon icon={faLightbulb} color={focused ? "white" : "black"} size={"2xl"}/>
+                    <FontAwesomeIcon icon={faLightbulb} color={focused ? "white" : "black"} size={"3x"}/>
+                    <div className="lights" style={{visibility: focused ? "visible" : "hidden"}}>
+
+                    <div className="light" id="l1"></div>
+                    <div className="light" id="l2"></div>
+                    <div className="light" id="l3"></div>
+                    </div>
+                    
                 </span>
                 
                     <input type="text" onFocus={handle_focus} onBlur={handle_blur} placeholder={"Enter a URL to see through words"} />
