@@ -7,25 +7,29 @@ import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
 
-const Header = () => {
+const Header = ({setFeedback, feedback}) => {
 
 const left = useRef();
 const [visible, setVisible] = useState(false)
 const total_animation_time = 3000
 const division = 8
 
-const [focused, setFocused] = useState(false)
+const [focused, setFocused] = useState(false);
 
+/* const [feedback, setFeedback] = useState(null);
+ */
 const link = useRef();
 
-     /* useEffect(() => {
-        const intervalId = setInterval(() => {
-            if(visible){setVisible(false); total_animation_time=1000}
-            else{setVisible(true); total_animation_time=3000}
-        }, total_animation_time);
-      
-        return () => clearInterval(intervalId);
-      } ); */
+/* useEffect(() => {
+const intervalId = setInterval(() => {
+    if(visible){setVisible(false); total_animation_time=1000}
+    else{setVisible(true); total_animation_time=3000}
+}, total_animation_time);
+
+return () => clearInterval(intervalId);
+} ); */
+
+
 const handle_focus = () => {
             setFocused(true)
 }
@@ -43,8 +47,8 @@ const handle_click = () => {
             axios.post("http://localhost:9000/testAPI",
                 {url: link.current.value}
             ).then(function (response) {
-                console.log(response);
-            });
+                setFeedback(response);
+            })
 
         
         }

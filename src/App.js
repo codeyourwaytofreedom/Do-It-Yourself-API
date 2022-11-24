@@ -5,11 +5,12 @@ import Header from "./header";
 import Statistics from "./statistics";
 
 function App() {
+  const [feedback, setFeedback] = useState(null);
 
   return (
     <div className="App">
-       <Header/>
-       <Statistics/>
+       <Header setFeedback={setFeedback} feedback={feedback}/>
+       <Statistics setFeedback={setFeedback} feedback={feedback}/>
        
 
     </div>

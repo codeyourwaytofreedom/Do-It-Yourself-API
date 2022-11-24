@@ -5,7 +5,7 @@ import { faCaretRight, faChessBishop, faChessKnight, faChessPawn, faChessQueen }
 import axios from "axios";
 import "./statistics.css"
 
-const Statistics = () => {
+const Statistics = ({setFeedback, feedback}) => {
 
     /* const[splitted, setSplitted] = useState(null);
     const [nonrepetitive, setNonrepetitive] = useState(null); */
@@ -18,12 +18,56 @@ const Statistics = () => {
   
     const [final_duals, setFinalduals] = useState(null);
     const [clicked_word, setClickedword] = useState(null);
+
+    useEffect(()=> {
+      console.log("from statistics",feedback)
+    })
   
     useEffect(()=> {   
-  
-        axios.get("http://localhost:9000/testAPI").then((response) => {
+      if(feedback) 
+      {
+        setAllcomments(feedback.data)
+        let all_words = [];
+          let sorted = [];
+
+          for (let index = 0; index < feedback.data.length; index++) {
+            const element = feedback.data[index].comment.split(" ");
+            for (let index = 0; index < element.length; index++) {
+              const word = element[index].toLowerCase();
+              all_words.push(word);
+              if(!sorted.includes(word)) 
+              {sorted.push(word)}
+            }
+          }
+          let duals = [];
+          for (let index = 0; index < sorted.length; index++) {
+            let repeat = 0;
+            for (let a = 0; a < all_words.length; a++) {
+              if(sorted[index] === all_words[a])
+              {repeat = repeat + 1}
+            }
+            if(repeat>4 && sorted[index].length >=3)
+            { 
+              //console.log(sorted[index], repeat)
+              duals.push({word: sorted[index], repetition: repeat})
+            }
+          }
+          duals.sort((b,a) => a.repetition - b.repetition); // b - a for reverse sort
+          //setSplitted(all_words)
+          /* setNonrepetitive(sorted)*/    
+          setFinalduals(duals) 
+          setClickedword(duals[0].word)
+
+      
+      }
+
+      else{
+
+        axios.get("http://localhost:9000/testAPI").then((response) => 
+        {
           let all_words = [];
           let sorted = [];
+
           setAllcomments(response.data)
           for (let index = 0; index < response.data.length; index++) {
             const element = response.data[index].comment.split(" ");
@@ -52,9 +96,13 @@ const Statistics = () => {
           /* setNonrepetitive(sorted)*/    
           setFinalduals(duals) 
           setClickedword(duals[0].word)
-        })
+        })      
+      }
+
+
+        
       
-    },[])
+    },[feedback])
 
     const test_post = () => {
           axios.post("http://localhost:9000/testAPI",
