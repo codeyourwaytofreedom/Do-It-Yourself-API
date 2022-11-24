@@ -45,6 +45,7 @@ html, body {
   background-color: black;
   border-radius: 40px;
   padding-left: 20px;
+  padding-right: 20px;
 }
 .header .url_bar span {
   transform: rotate(90deg);
@@ -57,19 +58,19 @@ html, body {
        column-gap: 7px;
   position: absolute;
   top: -57px;
-  left: 7px;
+  left: 9px;
 }
 .header .url_bar span .lights div {
   width: 1px;
   height: 40px;
   background-color: white;
-  box-shadow: 0px 0px 10px 10px white;
+  box-shadow: 0px 0px 10px 10px yellow;
 }
 .header .url_bar span #l1 {
-  transform: rotate(-18deg);
+  transform: rotate(-5deg);
 }
 .header .url_bar span #l3 {
-  transform: rotate(18deg);
+  transform: rotate(5deg);
 }
 .header .url_bar input {
   width: 100%;
@@ -85,6 +86,14 @@ html, body {
 }
 .header .url_bar input:focus + span {
   border: 4px solid white;
+}
+.header #link_button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.header #link_button div {
+  border: 2px solid red;
 }
 .header .motto {
   position: absolute;

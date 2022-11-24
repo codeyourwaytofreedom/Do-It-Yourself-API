@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import  {faBoltLightning, faFireBurner, faLightbulb} from '@fortawesome/free-solid-svg-icons';
+import  { faLightbulb, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 
 import "./header.css";
 import { useRef, useState, useEffect } from "react";
+
+import axios from "axios";
+
 
 const Header = () => {
 
@@ -25,9 +28,22 @@ const handle_focus = () => {
             setFocused(true)
 }
 
-const handle_blur = () => {
-        setFocused(false)
+const handle_blur = (e) => {
+        if(e.target.value.length === 0)
+        {setFocused(false)}
+        console.log(e.target.value)
 }
+
+const handle_click = () => {
+        const youtube_url_format =/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})?$/
+        console.log(youtube_url_format.test("https://www.hh.com/watch?v=iywvlUk2Wfg"))
+/*     axios.post("http://localhost:9000/testAPI",
+    {url: "https://www.youtube.com/watch?v=7aPzchOkxXk"}
+  ).then(function (response) {
+    console.log(response);
+  }); */
+}
+
 
     return ( 
         <div className="header">
@@ -40,18 +56,21 @@ const handle_blur = () => {
             
             <div className="url_bar">
                 <span>
-                    <FontAwesomeIcon icon={faLightbulb} color={focused ? "white" : "black"} size={"3x"}/>
+                    <FontAwesomeIcon icon={faLightbulb} color={focused ? "yellow" : "black"} size={"3x"}/>
                     <div className="lights" style={{visibility: focused ? "visible" : "hidden"}}>
-
-                    <div className="light" id="l1"></div>
-                    <div className="light" id="l2"></div>
-                    <div className="light" id="l3"></div>
+                        <div className="light" id="l1"></div>
+                        <div className="light" id="l2"></div>
+                        <div className="light" id="l3"></div>
                     </div>
-                    
                 </span>
-                
-                    <input type="text" onFocus={handle_focus} onBlur={handle_blur} placeholder={"Enter a URL to see through words"} />
-                </div>
+                    <input type="text" onFocus={handle_focus} onBlur={(e)=>handle_blur(e)} 
+                        placeholder={"Enter a URL to see through words"}
+                     />
+                    
+                    <button onClick={handle_click} id="link_button" style={{visibility: focused ? "visible" : "hidden"}}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} color={"yellow"} size={"2x"}/>
+                    </button>   
+            </div>
             <div className="foots">
                 <div className="foots_left">
                     <div className="foot" id="one" style={{opacity:visible ? "1" : 0 }}>
