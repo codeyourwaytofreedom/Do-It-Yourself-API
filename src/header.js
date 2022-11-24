@@ -10,7 +10,7 @@ import axios from "axios";
 const Header = ({setFeedback, setUrl_sent}) => {
 
 const left = useRef();
-const [visible, setVisible] = useState(false)
+const [visible, setVisible] = useState(true)
 const total_animation_time = 3000
 const division = 8
 
@@ -32,11 +32,13 @@ return () => clearInterval(intervalId);
 
 const handle_focus = () => {
             setFocused(true)
+            setVisible(true)
 }
 
 const handle_blur = (e) => {
         if(e.target.value.length === 0)
         {setFocused(false)}
+        setVisible(false)
 }
 
 const handle_click = () => {
@@ -61,12 +63,6 @@ const handle_click = () => {
 
     return ( 
         <div className="header">
-            <div className="logo_double">
-                <div className="youtube_logo">
-                <img src={require("./images/youtube.png")} alt="a" />
-            </div>
-            {/* <h1>YouTube Analytics</h1> */}
-            </div>
             
             <div className="url_bar">
                 <span>
@@ -85,6 +81,7 @@ const handle_click = () => {
                         <FontAwesomeIcon icon={faMagnifyingGlass} color={"yellow"} size={"2x"}/>
                     </button>   
             </div>
+            
             <div className="foots">
                 <div className="foots_left">
                     <div className="foot" id="one" style={{opacity:visible ? "1" : 0 }}>
@@ -133,13 +130,19 @@ const handle_click = () => {
                 {
                     !visible ? 
                     <div className="motto" style={{visibility: visible ? "hidden" : "visible"}}>
+                        <div className="logo_double">
+                            <div className="youtube_logo">
+                            <img src={require("./images/youtube.png")} alt="a" />
+                            </div>
+                        </div>
                         See Through Words
+
                     </div>
                     : null
                 }
                 
+                
             </div>
-            
                 
 
             

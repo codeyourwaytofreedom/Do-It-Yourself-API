@@ -13,11 +13,12 @@ html, body {
   width: 100%;
   /*     border: 2px solid red;
    */
-  padding: 40px;
+  padding: 80px;
 }
 
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
   align-items: center;
   -moz-column-gap: 20px;
        column-gap: 20px;
@@ -38,7 +39,6 @@ html, body {
      object-fit: contain;
 }
 .header .url_bar {
-  width: 40vw;
   height: 70px;
   display: flex;
   align-items: center;
@@ -98,16 +98,16 @@ html, body {
 .header .motto {
   position: absolute;
   top: -5px;
-  width: 500px;
-  height: 90px;
-  display: grid;
-  justify-content: center;
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  justify-self: center;
   align-items: center;
   -webkit-animation-name: shrink;
           animation-name: shrink;
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
-  font-size: 50px;
+  font-size: 3vw;
   font-weight: 700;
   color: red;
   z-index: 5;
@@ -115,12 +115,11 @@ html, body {
   text-shadow: 2px 2px 1px #3b051d;
 }
 .header .foots {
-  position: absolute;
-  right: 0;
-  width: 500px;
+  border: 4px solid red;
   height: 90px;
   display: grid;
-  padding-left: 50px;
+  align-self: center;
+  justify-content: center;
 }
 .header .foots_left {
   display: flex;
@@ -146,20 +145,11 @@ html, body {
   transform: rotate(84deg);
 }
 
-@-webkit-keyframes shrink {
-  from {
-    font-size: 50px;
-  }
-  to {
-    font-size: 30px;
-  }
-}
-
-@keyframes shrink {
-  from {
-    font-size: 50px;
-  }
-  to {
-    font-size: 30px;
-  }
-}/*# sourceMappingURL=header.css.map */
+/* @keyframes shrink {
+    from{
+        font-size: 50px;
+    }
+    to{
+        font-size: 30px;
+    }
+} *//*# sourceMappingURL=header.css.map */
