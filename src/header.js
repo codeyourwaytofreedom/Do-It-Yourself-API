@@ -55,7 +55,11 @@ const handle_click = () => {
 
         
         }
-        else{console.log("enter a valid youtube url")}
+        else{
+            console.log("enter a valid youtube url");
+            alert("Please enter a valid YouTube URL");
+            link.current.value = "";
+        }
 
 
 }

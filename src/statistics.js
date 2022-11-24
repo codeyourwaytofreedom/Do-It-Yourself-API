@@ -145,7 +145,7 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
                 {
                 final_duals && final_duals.slice(0,10).map((dual, index)=>
                 <div key={index} className="statistics_chart_comment" 
-                    style={{height: dual.repetition*5,
+                    style={{height: 200+dual.repetition*3,
                     backgroundColor:
                     index === 0 ? "orange":
                       index === 1 ? "yellowgreen":
@@ -159,10 +159,12 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
             <div className="statistics_chart_round">
               <div className="statistics_chart_round_title">Comments including the word "{clicked_word && clicked_word[0].toUpperCase()+clicked_word.substring(1)}"</div>
               <div className="statistics_chart_round_comments">             
-                {all_comments && all_comments.filter((comment)=> comment.comment.includes(clicked_word)).map((comment)=> 
+                {all_comments && all_comments.filter((comment)=> comment.comment.includes(clicked_word)).map((comment,index)=> 
                         <div className="statistics_chart_round_comments_comment">
-                          <div><FontAwesomeIcon icon={faCaretRight} color={"black"} size={"2x"} /></div>
-                          <div id="comment-text">{comment.comment[0].toUpperCase()+comment.comment.substring(1)}</div>
+                          <div><FontAwesomeIcon icon={faCaretRight} color={index % 2 == 0 ? "black" : "red"} size={"2x"} /></div>
+                          <div id="comment-text" style={{borderLeft:index % 2 == 0 ? "3px solid black" : "3px solid red" }}>
+                            {comment.comment[0].toUpperCase()+comment.comment.substring(1)}
+                          </div>
                         </div>
                 )}
               </div>
