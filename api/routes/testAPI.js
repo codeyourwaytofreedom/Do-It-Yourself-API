@@ -20,7 +20,7 @@ router.post("/",jsonParser, function(req, res) {
     console.log(req.body.url)
     async function run(){
         const browser = await puppeteer.launch({
-            headless:false,
+            headless:true,
             executablePath: executablePath()
         })
         const page = await browser.newPage()
@@ -54,7 +54,7 @@ router.post("/",jsonParser, function(req, res) {
 
 async function run(){
     const browser = await puppeteer.launch({
-        headless:false,
+        headless:true,
         executablePath: executablePath()
     })
     const page = await browser.newPage()

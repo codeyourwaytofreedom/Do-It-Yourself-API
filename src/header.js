@@ -7,7 +7,7 @@ import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
 
-const Header = ({setFeedback, feedback}) => {
+const Header = ({setFeedback, setUrl_sent}) => {
 
 const left = useRef();
 const [visible, setVisible] = useState(false)
@@ -43,6 +43,7 @@ const handle_click = () => {
         const youtube_url_format =/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})?$/
         if(link.current &&  youtube_url_format.test(link.current.value))
         {
+            setUrl_sent(true);
             console.log("satisfies url format")
             axios.post("http://localhost:9000/testAPI",
                 {url: link.current.value}

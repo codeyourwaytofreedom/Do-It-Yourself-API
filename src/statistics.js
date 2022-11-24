@@ -5,7 +5,7 @@ import { faCaretRight, faChessBishop, faChessKnight, faChessPawn, faChessQueen }
 import axios from "axios";
 import "./statistics.css"
 
-const Statistics = ({setFeedback, feedback}) => {
+const Statistics = ({url_sent, feedback,setUrl_sent}) => {
 
     /* const[splitted, setSplitted] = useState(null);
     const [nonrepetitive, setNonrepetitive] = useState(null); */
@@ -24,8 +24,9 @@ const Statistics = ({setFeedback, feedback}) => {
     })
   
     useEffect(()=> {   
-      if(feedback) 
+      if(feedback && feedback.data.length !== 0) 
       {
+        setUrl_sent(false)
         setAllcomments(feedback.data)
         let all_words = [];
           let sorted = [];
@@ -180,7 +181,14 @@ const Statistics = ({setFeedback, feedback}) => {
               </div>
 
             </div>
-                
+            
+            {url_sent ? 
+                            <div className="loading_modal">
+                       
+                                    <img src="https://media.tenor.com/-J3rO8bFMLsAAAAi/timer-sablier.gif" alt="Timer Sablier Sticker - Timer Sablier Stickers"></img>
+                            </div> 
+                      : null
+            }
         </div>
      );
 }
