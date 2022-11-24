@@ -25,7 +25,7 @@ router.post("/",jsonParser, function(req, res) {
         })
         const page = await browser.newPage()
         
-        await page.goto('https://www.youtube.com/watch?v=7aPzchOkxXk');
+        await page.goto(req.body.url);
         await page.waitForTimeout(5000);    
 
         for (let index = 0; index < 10; index++) {

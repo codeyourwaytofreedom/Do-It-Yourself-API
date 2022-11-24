@@ -16,6 +16,8 @@ const division = 8
 
 const [focused, setFocused] = useState(false)
 
+const link = useRef();
+
      /* useEffect(() => {
         const intervalId = setInterval(() => {
             if(visible){setVisible(false); total_animation_time=1000}
@@ -31,17 +33,24 @@ const handle_focus = () => {
 const handle_blur = (e) => {
         if(e.target.value.length === 0)
         {setFocused(false)}
-        console.log(e.target.value)
 }
 
 const handle_click = () => {
         const youtube_url_format =/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})?$/
-        console.log(youtube_url_format.test("https://www.hh.com/watch?v=iywvlUk2Wfg"))
-/*     axios.post("http://localhost:9000/testAPI",
-    {url: "https://www.youtube.com/watch?v=7aPzchOkxXk"}
-  ).then(function (response) {
-    console.log(response);
-  }); */
+        if(link.current &&  youtube_url_format.test(link.current.value))
+        {
+            console.log("satisfies url format")
+            axios.post("http://localhost:9000/testAPI",
+                {url: link.current.value}
+            ).then(function (response) {
+                console.log(response);
+            });
+
+        
+        }
+        else{console.log("enter a valid youtube url")}
+
+
 }
 
 
@@ -64,7 +73,7 @@ const handle_click = () => {
                     </div>
                 </span>
                     <input type="text" onFocus={handle_focus} onBlur={(e)=>handle_blur(e)} 
-                        placeholder={"Enter a URL to see through words"}
+                        placeholder={"Enter a URL to see through words"} ref={link}
                      />
                     
                     <button onClick={handle_click} id="link_button" style={{visibility: focused ? "visible" : "hidden"}}>
