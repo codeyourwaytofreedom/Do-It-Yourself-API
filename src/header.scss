@@ -21,7 +21,7 @@ html, body{
     display: grid;
     grid-template-columns: 3fr 2fr;
     align-items: center;
-    column-gap: 20px;
+    //column-gap: 20px;
     font-family: 'Calligraffitti';
     position: relative;
     .logo_double{
@@ -79,7 +79,7 @@ html, body{
             border: none;
             background: transparent;
             padding-left: 90px;
-            color: white;
+            color: yellow;
             font-size: 21px;
             &:focus{
                 outline: none;
@@ -117,7 +117,7 @@ html, body{
     }
     .foots{
 
-       border:4px solid red;
+       //border:4px solid red;
         //width: 500px;
         height: 90px;
         display: grid;
@@ -145,12 +145,12 @@ html, body{
             object-fit: contain;
         }
     }
-    #one, #three, #five, #seven{
+    #one, #three, #five, #seven, #nine, #eleven{
         img{
             transform: rotate(80deg);
         }
     }
-    #two, #four, #six, #eight{
+    #two, #four, #six, #eight, #ten{
         img{
             transform: rotate(84deg);
         }

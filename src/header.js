@@ -10,7 +10,7 @@ import axios from "axios";
 const Header = ({setFeedback, setUrl_sent}) => {
 
 const left = useRef();
-const [visible, setVisible] = useState(true)
+const [visible, setVisible] = useState(false)
 const total_animation_time = 3000
 const division = 8
 
@@ -102,6 +102,16 @@ const handle_click = () => {
                     <div className="foot" id="seven" style={{opacity:visible ? "1" : 0, transitionDelay:visible ? 6*total_animation_time/division+"ms" : "0s"  }}>
                         <img src={require("./images/left-footprint.png")} alt="a" />
                     </div> 
+                    <div className="foot" style={{opacity:visible ? "1" : 0 }}>
+                    </div> 
+                    <div className="foot" id="nine" style={{opacity:visible ? "1" : 0, transitionDelay:visible ? 8*total_animation_time/division+"ms" : "0s"  }}>
+                        <img src={require("./images/left-footprint.png")} alt="a" />
+                    </div> 
+                    <div className="foot" style={{opacity:visible ? "1" : 0 }}>
+                    </div> 
+                    <div className="foot" id="eleven" style={{opacity:visible ? "1" : 0, transitionDelay:visible ? 10*total_animation_time/division+"ms" : "0s"  }}>
+                        <img src={require("./images/left-footprint.png")} alt="a" />
+                    </div> 
                 </div>
                 <div className="foots_right">
                     <div className="foot" style={{opacity:visible ? "1" : 0 }}>
@@ -123,6 +133,13 @@ const handle_click = () => {
                     </div> 
                     <div className="foot" id="eight" style={{opacity:visible ? "1" : 0, transitionDelay:visible ? 7*total_animation_time/division+"ms" : "0s" }}>
                         <img src={require("./images/right-footprint.png")} alt="a" />
+                    </div> 
+                    <div className="foot" style={{opacity:visible ? "1" : 0}}>
+                    </div> 
+                    <div className="foot" id="ten" style={{opacity:visible ? "1" : 0, transitionDelay:visible ? 9*total_animation_time/division+"ms" : "0s" }}>
+                        <img src={require("./images/right-footprint.png")} alt="a" />
+                    </div> 
+                    <div className="foot" style={{opacity:visible ? "1" : 0}}>
                     </div> 
 
                 </div>

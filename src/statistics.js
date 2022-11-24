@@ -99,19 +99,7 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
           setClickedword(duals[0].word)
         })      
       }
-
-
-        
-      
     },[feedback])
-
-    const test_post = () => {
-          axios.post("http://localhost:9000/testAPI",
-          {url: "https://www.youtube.com/watch?v=7aPzchOkxXk"}
-        ).then(function (response) {
-          console.log(response);
-        });
-    }
 
     return ( 
         <div className="statistics">
@@ -170,8 +158,7 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
             </div>
             <div className="statistics_chart_round">
               <div className="statistics_chart_round_title">Comments including the word "{clicked_word && clicked_word[0].toUpperCase()+clicked_word.substring(1)}"</div>
-              <div className="statistics_chart_round_comments">   
-              <button onClick={test_post}>Test Post</button>             
+              <div className="statistics_chart_round_comments">             
                 {all_comments && all_comments.filter((comment)=> comment.comment.includes(clicked_word)).map((comment)=> 
                         <div className="statistics_chart_round_comments_comment">
                           <div><FontAwesomeIcon icon={faCaretRight} color={"black"} size={"2x"} /></div>
@@ -184,7 +171,6 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
             
             {url_sent ? 
                             <div className="loading_modal">
-                       
                                     <img src="https://media.tenor.com/-J3rO8bFMLsAAAAi/timer-sablier.gif" alt="Timer Sablier Sticker - Timer Sablier Stickers"></img>
                             </div> 
                       : null
