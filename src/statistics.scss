@@ -104,9 +104,19 @@
         align-items: center;
         position: absolute;
         top: 0; bottom: 0; left: 0; right: 0;
-        background-color: rgba($color: #000000, $alpha: 0.7);
+        background-color: rgba($color: #000000, $alpha: 0.8);
         z-index: 99999 !important;
+        h1{
+            font-size: 3vw;
+            font-weight: 900;
+            color: red;
+            animation-name: blink;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
         img{
+            position: relative;
+            left: 25%;
             width: 150px;
             aspect-ratio: 2/3;
             animation-name: rot;
@@ -153,4 +163,9 @@
       100% {
         transform: rotate(360deg)
       }
+}
+
+@keyframes blink {
+    from{color:red;}
+    to{color:gold;}
 }

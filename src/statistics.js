@@ -4,6 +4,7 @@ import { faCaretRight, faChessBishop, faChessKnight, faChessPawn, faChessQueen }
 
 import axios from "axios";
 import "./statistics.css"
+import {initial_comments} from "./initial_example";
 
 const Statistics = ({url_sent, feedback,setUrl_sent}) => {
 
@@ -69,14 +70,13 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
 
       else{
 
-        axios.get("http://localhost:9000/testAPI").then((response) => 
-        {
+        
           let all_words = [];
           let sorted = [];
 
-          setAllcomments(response.data)
-          for (let index = 0; index < response.data.length; index++) {
-            const element = response.data[index].comment.split(" ");
+          setAllcomments(initial_comments)
+          for (let index = 0; index < initial_comments.length; index++) {
+            const element = initial_comments[index].comment.split(" ");
             for (let index = 0; index < element.length; index++) {
               const word = element[index].toLowerCase();
               all_words.push(word);
@@ -102,7 +102,7 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
           /* setNonrepetitive(sorted)*/    
           setFinalduals(duals) 
           setClickedword(duals[0].word)
-        })      
+           
       }
     },[feedback])
 
@@ -178,7 +178,11 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
             
             {url_sent ? 
                             <div className="loading_modal">
-                                    <img src="https://media.tenor.com/-J3rO8bFMLsAAAAi/timer-sablier.gif" alt="Timer Sablier Sticker - Timer Sablier Stickers"></img>
+                              <div>
+                                  <h1>Comments are loading...</h1>
+                                  <img src="https://media.tenor.com/-J3rO8bFMLsAAAAi/timer-sablier.gif" alt="Timer Sablier Sticker - Timer Sablier Stickers"></img>
+                              </div>
+                                    
                             </div> 
                       : null
             }
