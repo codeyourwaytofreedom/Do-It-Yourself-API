@@ -58,8 +58,13 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
           /* setNonrepetitive(sorted)*/    
           setFinalduals(duals) 
           setClickedword(duals[0].word)
-
+      }
       
+      if(feedback && feedback.data.length ===0)
+      {
+        console.log("burada sorun")
+        setUrl_sent(false)
+        alert("No comment found")
       }
 
       else{
@@ -161,8 +166,8 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
               <div className="statistics_chart_round_comments">             
                 {all_comments && all_comments.filter((comment)=> comment.comment.includes(clicked_word)).map((comment,index)=> 
                         <div className="statistics_chart_round_comments_comment">
-                          <div><FontAwesomeIcon icon={faCaretRight} color={index % 2 == 0 ? "black" : "red"} size={"2x"} /></div>
-                          <div id="comment-text" style={{borderLeft:index % 2 == 0 ? "3px solid black" : "3px solid red" }}>
+                          <div><FontAwesomeIcon icon={faCaretRight} color={index % 2 === 0 ? "black" : "red"} size={"2x"} /></div>
+                          <div id="comment-text" style={{borderLeft:index % 2 === 0 ? "3px solid black" : "3px solid red" }}>
                             {comment.comment[0].toUpperCase()+comment.comment.substring(1)}
                           </div>
                         </div>

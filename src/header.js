@@ -52,7 +52,8 @@ const handle_click = () => {
             ).then(function (response) {
                 setFeedback(response);
             })
-
+            link.current.value = "";
+            setFocused(false)
         
         }
         else{
