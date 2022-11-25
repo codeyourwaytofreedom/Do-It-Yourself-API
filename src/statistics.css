@@ -60,10 +60,9 @@
 .statistics_chart_round {
   display: grid;
   justify-self: end;
-  border: 1px solid purple;
-  border-radius: 5px;
-  border-top-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border: 2px solid black;
+  box-shadow: inset 0px 0px 2px 1px red;
+  border-radius: 15px;
   height: 500px;
   overflow-y: scroll;
 }
