@@ -7,7 +7,7 @@ import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
 
-const Header = ({setFeedback, setUrl_sent}) => {
+const Header = ({setFeedback, setUrl_sent,setErrormesagge}) => {
 
 const left = useRef();
 const [visible, setVisible] = useState(false)
@@ -51,7 +51,7 @@ const handle_click = () => {
                 {url: link.current.value}
             ).then(function (response) {
                 setFeedback(response);
-            })
+            }).catch((error) => setErrormesagge(error))
             link.current.value = "";
             setFocused(false)
         

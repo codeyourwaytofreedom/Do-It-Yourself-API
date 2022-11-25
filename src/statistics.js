@@ -6,7 +6,7 @@ import axios from "axios";
 import "./statistics.css"
 import {initial_comments} from "./initial_example";
 
-const Statistics = ({url_sent, feedback,setUrl_sent}) => {
+const Statistics = ({url_sent, feedback,setUrl_sent,errormessage}) => {
 
     /* const[splitted, setSplitted] = useState(null);
     const [nonrepetitive, setNonrepetitive] = useState(null); */
@@ -67,10 +67,16 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
         setUrl_sent(false)
         alert("No comment found")
       }
+      if(errormessage)
+      {
+        setUrl_sent(false)
+        alert(errormessage.message)
+      }
 
-      else{
 
-        
+      if(!feedback)
+      
+      {
           let all_words = [];
           let sorted = [];
 
@@ -104,7 +110,7 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
           setClickedword(duals[0].word)
            
       }
-    },[feedback])
+    },[feedback, errormessage])
 
     return ( 
         <div className="statistics">
@@ -178,11 +184,14 @@ const Statistics = ({url_sent, feedback,setUrl_sent}) => {
             
             {url_sent ? 
                             <div className="loading_modal">
-                              <div>
-                                  <h1>Comments are loading...</h1>
-                                  <img src="https://media.tenor.com/-J3rO8bFMLsAAAAi/timer-sablier.gif" alt="Timer Sablier Sticker - Timer Sablier Stickers"></img>
-                              </div>
-                                    
+                              {
+                                !errormessage ? 
+                                  <div>
+                                    <h1>Comments are loading...</h1>
+                                    <img src="https://media.tenor.com/-J3rO8bFMLsAAAAi/timer-sablier.gif" alt="Timer Sablier Sticker - Timer Sablier Stickers"></img>
+                                  </div>
+                                : null
+                              }
                             </div> 
                       : null
             }

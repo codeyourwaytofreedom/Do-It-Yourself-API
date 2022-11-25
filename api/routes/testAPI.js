@@ -85,8 +85,8 @@ async function run(){
 }
 
 
-run()
-
+/* run()
+ */
 // async function getText(){
 //    //launch browser in headless mode
 //    const browser = await pt.launch()
